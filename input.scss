@@ -1,0 +1,80 @@
+// import in sass
+@import 'header'; 
+
+$font-stack:    Helvetica, sans-serif;
+$primary-color: #333;
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+}
+
+// Nesting in Sass. It gives clear structure about parent child relationships & help reduce redundancy.
+.parent {
+
+  background-color: purple;
+  .child{
+    background-color: aqua;
+
+    .grandchild {
+      background-color: yellow;
+    }
+  }
+
+  .child2 {
+    background-color: red;
+  }
+}
+
+// Mixins
+
+@mixin someDiv($property){
+  background-color: pink;
+  padding: 2.5em;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 3.2em;  
+  border: $property;
+  margin: 2em;
+}
+
+.hero {
+  @include someDiv(2px solid black);
+}
+
+footer {
+  @include someDiv(8px dashed black);
+}
+
+// Inheritace
+
+%automobile{
+  background: yellow;
+  border: 2px dotted green;
+}
+
+.car {
+  @extend %automobile;
+  padding: 2em;
+}
+
+.bus {
+  @extend %automobile;
+}
+
+
+// Operato0rs
+
+.container {
+  width: 100%;
+}
+article[role="main"] {
+  float: left;
+  width: 600px / 960px * 100%;
+  background-color: red;
+}
+aside[role="complementary"] {
+  float: right;
+  width: 300px / 960px * 100%;
+  background-color: yellow;
+}
+
